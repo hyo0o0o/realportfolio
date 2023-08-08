@@ -1,0 +1,1264 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Press+Start+2P&family=Roboto+Condensed:wght@300;400;700&family=VT323&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'VT323', monospace; */
+@import url(airplane.css);
+@import url(text.css);
+
+:root {
+   --font-kr: 'Noto Sans KR', sans-serif;
+   --font-pixel: 'VT323', monospace;
+   --font-en: 'Roboto Condensed', sans-serif;
+   --font-purple: #8105d8;
+   --font-pink: #F637EC;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+a {
+   list-style: none;
+   text-decoration: none;
+   text-transform: none;
+}
+
+html,
+.door {
+   height: 100%;
+   width: 100%;
+   position: relative;
+   overflow-x: hidden;
+}
+
+body {
+   background-color: #000;
+   color: #ccc;
+   font-size: 10pt;
+   width: 100%;
+   height: 100%;
+   background-size: cover;
+   
+}
+
+h1 {
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   height: 200px;
+   width: 200px;
+   text-align: center;
+   font-family: arial;
+   font-size: 50px;
+   margin: auto;
+}
+
+.text_skrollr{
+   position: fixed;
+   left: 30px;
+   top: 10px;
+   z-index: 500;
+   color: #Fff;
+}
+
+/* door */
+
+.door {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: 200;
+}
+
+.door .left,
+.door .right {
+   font-size: 10pt;
+   display: inline-block;
+   width: calc(50% - 2.5px);
+   height: 100%;
+   background: #000;
+}
+
+.door .left {
+   float: left;
+   border-right: solid 2.5px #333;
+}
+
+.door .right {
+   float: right;
+   border-left: solid 2.5px #333;
+}
+
+.enter {
+   cursor: pointer;
+   display: block;
+   top: 0;
+   left: 0;
+   right: 50px;
+   bottom: 30px;
+   height: 30px;
+   width: 50px;
+   text-align: center;
+   line-height: 30px;
+   border-radius: 5px;
+   z-index: 201;
+   position: absolute;
+   padding: 5px 10px;
+   margin: auto;
+}
+
+.enter:hover {}
+
+/* top button */
+
+#button {
+   position: fixed;
+   display: inline-block;
+   right: 30px;
+   bottom: 30px;
+   transition: opacity .5s, visibility .5s;
+   opacity: 0;
+   visibility: hidden;
+   z-index: 1000;
+}
+
+#button::after {
+   content: "";
+}
+
+#button:hover {
+   cursor: pointer;
+   transform: rotate3d(180deg);
+}
+
+#button:active {}
+
+#button.show {
+   opacity: 1;
+   visibility: visible;
+}
+
+#button img {
+   width: 60px;
+   height: 60px;
+}
+
+ #main_page {
+    position: relative;
+    width: 100vh;
+    height: 100vh;
+ }
+ 
+ #introduce_page {
+    width: 100vh;
+    height: 100vh;
+ }
+
+ #container h2 {
+
+ }
+#container .bg_img {
+   position: absolute;
+    background: url(../img/bg_img/01.png)no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -3;
+/* width: 2000px; */
+ height: 700px;
+    left: 0;
+    top: 25%;
+    right: -500px;
+    bottom: 0;
+    transform: translate(50%,50%);
+    transform: rotate(340deg);
+}
+
+/* main page */
+
+/* menu */
+
+
+ul.menu-bar {
+   position: fixed;
+   width: 98%;
+   list-style-type: none;
+   font-family: var(--font-pixel);
+   font-size: 20px;
+   margin: 10px;
+   filter:  drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.30));
+   display: flex;
+   /* 로고와 메뉴 항목들을 가로로 배치하기 위해 Flexbox 사용 */
+   align-items: center;
+   /* 로고와 메뉴 항목들을 수직 정렬 */
+   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+   z-index: 100;
+   transition: 0.3s;
+
+}
+
+ul.menu-bar li {
+   display: inline-block;
+
+}
+
+ul.menu-bar li.logo {
+   margin-right: auto;
+   /* 로고를 왼쪽에 두기 위해 나머지 공간을 차지하지 않도록 설정 */
+}
+
+ul.menu-bar li a {
+   display: block;
+   padding: 10px 20px;
+   text-decoration: none;
+   color: #ccc;
+}
+
+ul.menu-bar li a:hover {
+   border-bottom: 2px solid #ccc;
+}
+
+ul.menu-bar li::after {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   width: 0;
+   height: 2px;
+   transition: width 0.3s ease-in-out;
+   transform: translateX(-50%);
+}
+
+ul.menu-bar li a:hover::after {
+   width: 100%;
+}
+
+
+/* 로고 이미지 스타일링 */
+.logo img {
+   height: 50px;
+   /* 로고 이미지의 높이를 조정하세요 */
+   width: 50px;
+   margin-right: 10px;
+   /* 로고 오른쪽 여백을 설정하세요 */
+}
+
+
+/* mouse trailer */
+
+#trailer {
+   width: 20px;
+   height: 20px;
+   background-color: #F637EC;
+   border-radius: 20px;
+   position: fixed;
+   left: 0;
+   top: 0;
+   z-index: 1000;
+
+   pointer-events: none;
+   opacity: 0;
+   transition: opacity 600ms ease, translate 600ms forwards;
+}
+
+body:hover>#trailer {
+   opacity: 1;
+}
+
+/* scrollbar custom */
+
+/* .force-overflow {
+   min-height: 450px;
+}
+
+#scrollbar_custom::-webkit-scrollbar-thumb {
+   background-color: #000;
+   background-image: -webkit-linear-gradient(90deg, rgba(246,55,236,0.8)25%, transparent 25%, transparent 50%, rgba(246,55,236,0.8)50%, rgba(246,55,236,0.8)75%, transparent 75%, transparent);
+} */
+
+/* -----------------text tit-------------------- */
+
+section.text_effect {
+   position: relative;
+    color: #fff;
+    overflow: hidden;
+    height: 625px;
+    margin-top: 200px;
+}
+
+.text_wrapp {}
+
+.text {
+   position: absolute;
+   font-size: 150px;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   rotate: -15deg;
+   font-family: var(--font-pixel);
+}
+
+.text span {}
+
+.base-anim {
+   animation: up_down 2.5s ease-in-out infinite alternate,
+      rotate 5s ease-in-out infinite alternate;
+}
+
+@keyframes up_down {
+   0% {
+      transform: translate(-50%, -50%) translateY(-50px);
+   }
+
+   100% {
+      transform: translate(-50%, -50%) translateY(50px);
+   }
+}
+
+@keyframes rotate {
+   0% {
+      rotate: -15deg;
+   }
+
+   100% {
+      rotate: 15deg;
+   }
+}
+
+.outline-text {
+   color: transparent;
+   -webkit-text-stroke: 1px rgb(232, 239, 243);
+}
+
+/* -------------------introduce page--------------------- */
+
+#introduce_page {
+   position: relative;
+}
+
+#intro {
+   position: relative;
+   margin-top: 50px;
+}
+
+.intro_left {
+   float: left;
+   width: 40%;
+   overflow: hidden;
+}
+
+/* --------------Splitting----------------- */
+
+.intro_left .intro_img h2 {
+   position: absolute;
+   left: 20%;
+   top: 0;
+   font-family: var(--font-pixel);
+   font-size: 30px;
+   text-transform: uppercase;
+   width: 500px;
+   height: 600px;
+}
+
+.char {
+   --offset: calc(var(--char-index) * 1rem);
+   offset-path: path("M0 0 l648 0 l0 648 l -652 0 Z");
+   offset-distance: var(--offset);
+   position: absolute;
+   animation: move 55000ms infinite linear var(--delay, 0ms);
+}
+
+@keyframes move {
+   100% {
+      offset-distance: calc(var(--offset) + 250rem);
+   }
+}
+
+.intro_left .intro_img {
+   position: absolute;
+}
+
+.intro_left .intro_img img {
+   position: absolute;
+   display: block;
+   width: 400px;
+   height: 565px;
+   margin: 50px;
+   left: 20%;
+   top: 0;
+}
+
+@keyframes floating-rotate {
+   0% {
+     transform: translateY(0) rotate(0deg); 
+   }
+   50% {
+     transform: translateY(-10px) rotate(5deg);
+   }
+   100% {
+     transform: translateY(0) rotate(-5deg); 
+   }
+ }
+
+.intro_right {
+   position: absolute;
+   float: right;
+   width: 70%;
+   right: -80%;
+   border: 1px solid #ccc;
+   padding: 80px;
+   border-radius: 10px;
+}
+
+.intro_right .intro_desc .intro {
+   margin-bottom: 20px;
+}
+
+.intro_right .intro_desc>div {
+   width: 100%;
+   height: 33.3%;
+   display: flex;
+}
+
+.intro_right .intro_desc .intro_first>div {
+   width: 50%;
+   height: 100%;
+}
+
+.intro_right .intro_desc .intro_second>div {
+   width: 100%;
+   height: 100%;
+}
+
+.intro_right .intro_desc .intro_third>div {
+   width: 50%;
+   height: 100%;
+}
+
+.intro_right .intro_desc .intro h2 {
+   display: block;
+   width: 100%;
+   font-family: var(--font-pixel);
+   font-size: 30px;
+   color: #f637ec;
+   margin: 10px 0;
+}
+
+.intro_right .intro_desc .intro span {
+   font-family: var(--font-pixel);
+   font-size: 25px;
+   color: #8105d8;
+   padding-right: 20px;
+}
+
+.intro_right .intro_desc .intro p {
+   font-family: var(--font-kr);
+   font-size: 15px;
+   color: #ccc;
+}
+
+.intro_right .intro_desc .intro_skils {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.intro_right .intro_desc .intro_skils div {
+   display: flex;
+}
+
+.intro_right .intro_desc .intro_skils h2 {
+   margin-bottom: 10px;
+}
+
+.intro_right .intro_desc .intro_skils p img {
+   width: 50px;
+   height: 50px;
+   margin: 3px;
+}
+
+.intro_right .intro_desc .intro_about {
+   padding-left: 50px;
+}
+
+
+
+#intro .bg_img3 {
+   position: absolute;
+   width: 250px;
+   right: -94%;
+   top: 490px;
+   animation: floating-rotate 5s ease-in-out infinite;
+
+}
+
+/* panarama */
+
+.sj_panorama {
+   position: relative;
+   overflow: hidden;
+   height: 40vh;
+   /* padding-top: 30vh; */
+ }
+ 
+ .sj_panorama .text_area {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 20;
+ }
+ 
+ .sj_panorama .text_area h2 {
+   color: #f1f1f1;
+   font-size: 80px;
+ }
+ 
+ .sj_panorama .pano_wrap {
+   white-space: nowrap;
+ } 
+ 
+ .sj_panorama .pano_wrap .list {
+   display: inline-block;
+   white-space: nowrap;
+   /* r공간부족해도 아래로 떨어지지마 */
+ }
+ 
+ .sj_panorama .pano_wrap .list li {
+ 
+   display: inline-block;
+   width: 300px;
+   height: 400px;
+ }
+ 
+ .sj_panorama .pano_wrap .list li img {
+   width: 100%;
+   height: 100%;
+ }
+
+ .sj_panorama .controls {
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   z-index: 20;
+ }
+ 
+ .sj_panorama .controls a {
+   font-size: 20px;
+ }
+ 
+ .sj_panorama .controls a i {
+   position: absolute;
+   right: 0;
+   top: 0;
+   color: #f1f1f1;
+ 
+ }
+ 
+ .sj_panorama .controls a i em {
+   text-indent: -99999rem;
+   font-size: 0;
+   line-height: 0;
+ }
+ 
+ 
+ 
+ .sj_panorama .controls a.active .play {
+   opacity: 0;
+ }
+ .sj_panorama .controls a .play {
+   opacity: 1;
+ }
+ .sj_panorama .controls a.active .pause {
+   opacity: 1;
+ }
+ .sj_panorama .controls a .pause {
+   opacity: 0;
+ }
+
+/* skill bar */
+
+#skills_bar {
+   position: relative;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.skills {
+   width: 100%;
+   max-width: 1000px;
+   padding: 20px 500px 20px 0;
+ }
+
+ .skill-name {
+   font-size: 30px;
+   font-weight: 700;
+   text-transform: uppercase;
+   margin: 20px 0;
+   font-family: var(--font-pixel);
+ }
+
+ .skill-bar {
+   height: 20px;
+   background: #cacaca;
+   border-radius: 8px;
+ }
+
+ .skill-per {
+   height: 20px;
+   background-color: var(--font-pink);
+   border-radius: 8px;
+   width: 0;
+   position: relative;
+   transition: 1s linear;
+ }
+
+ .skill-per::before {
+   content: attr(per);
+   position: absolute;
+   padding: 4px 6px;
+   background-color: var(--font-pink);
+   color: #fff;
+   font-size: 12px;
+   border-radius: 4px;
+   top: -35px;
+   right: 0;
+   transform: translateX(50%);
+ }
+
+ .skill-per::after {
+   content: "";
+   position: absolute;
+   width: 10px;
+   height: 10px;
+   background-color: var(--font-pink);
+   top: -16px;
+   right: 0;
+   transform: translateX(50%) rotate(45deg);
+   border-radius: 2px;
+ }
+
+ #skills .skills .skills_img {
+   position: absolute;
+   width: 100%;
+   left: -23%;
+   top: -20%;
+   animation: floating 2s ease-in-out infinite;
+   z-index: 9;
+ }
+
+ #skills .skills .skills_img2 {
+   position: absolute;
+   width: 100%;
+   right: -85%;
+   bottom: -15%;
+   animation: floating 4s ease-in-out infinite;
+   z-index: 9;
+ }
+ 
+ #skills .skills .skills_img3 {
+   position: absolute;
+   width: 100%;
+   left: -30%;
+   top: 13%;
+   transform: translate(50%, 50%);
+   animation: floating 1s ease-in-out infinite;
+ }
+
+ @keyframes floating {
+   0% {
+     transform: translateY(0); /* 초기 위치 */
+   }
+   50% {
+     transform: translateY(-10px); /* 중간 위치 (위로 올라감) */
+   }
+   100% {
+     transform: translateY(0); /* 최종 위치 (원래 위치로 돌아옴) */
+   }
+ }
+
+ #skills {
+   position: relative;
+ }
+
+ #skills .skill_img_1,  #skills .skill_img2_2,  #skills .skill_img3_3,  #skills .skill_img4_4 {
+   position: absolute;
+ }
+
+ #skills .skill_img_1 img {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 250px;
+   height: 400px;
+ }
+ 
+ #skills .skill_img2_2 img {
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 250px;
+   height: 400px;
+ }
+
+ #skills .skill_img3_3 img {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 400px;
+   height: 450px;
+   transform: rotate(-10deg)
+ }
+
+ #skills .skill_img4_4 img {
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 200px;
+   height: 400px;
+   transform: rotate(15deg);
+ }
+
+/* -----------------product------------------- */
+
+#product {
+   position: relative;
+   width: 100vw;
+   height: 100vh;
+}
+
+.scroll-section {
+   width: 100%; /* 뷰포트 너비에 맞춰 가로로 표시됨 */
+   height: 100vh; /* 뷰포트 높이와 같은 높이로 설정하여 전체 화면 표시 */
+   white-space: nowrap; /* 가로로 나열하기 위해 줄바꿈 방지 */
+   overflow: hidden; /* 가로로 나열된 컨텐츠를 넘어가는 부분은 숨김 처리 */
+ }
+
+.product .product_page {}
+
+.product .product_page .product_img {
+   position: absolute;
+   float: left;
+   width: 60%;
+   bottom: 80%;
+}
+
+.product .product_page .product_desc_all {
+   
+}
+
+.product .product_page .product_desc {
+   position: absolute;
+   float: right;
+   width: 20%;
+   right: 15%;
+   bottom: 18%;
+   border: 1px solid var(--font-purple);
+   padding: 60px 20px;
+}
+
+.product .product_page .descdesc {
+   bottom: 12%;
+}
+
+.product .product_page .product_img img {
+   position: absolute;
+   width: 1300px;
+   height: 900px;
+   left: 0%;
+   top: -30%;
+}
+
+/* RESPONSIVE product 1 */
+
+.product .product_page .product_img .monitor_wrap1 {
+   position: absolute;
+   left: 220px;
+   top: 180px;
+   width: 530px;
+   height: 420px;
+   background: url(img/responsible/responsible.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   z-index: -3;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap2 {
+   position: absolute;
+   left: 687px;
+   top: 405px;
+   width: 405px;
+   height: 306px;
+   background: url(img/responsible/responsible_pad.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap3 {
+   position: absolute;
+   left: 275px;
+   top: 590px;
+   width: 78.8px;
+   height: 145px;
+   background: url(img/responsible/responsible_phone.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap1:hover {
+   background-position: bottom;
+}
+
+.product .product_page .product_img .monitor_wrap2:hover {
+   background-position: bottom;
+}
+
+.product .product_page .product_img .monitor_wrap3:hover {
+   background-position: bottom;
+}
+
+.product .product_page .product_desc {
+   position: absolute;
+}
+
+.product .product_page .product_desc p {
+   font-size: 20px;
+   font-family: var(--font-kr);
+   margin-bottom: 20px;
+}
+
+.product .product_page .product_desc p span {
+   font-size: 30px;
+   font-family: var(--font-pixel);
+   color: var(--font-pink);
+   padding-right: 20px;
+}
+
+.product .product_page .product_button {
+   display: block;
+   position: absolute;
+   float: right;
+   width: 20%;
+   right: 15%;
+   bottom: 9.5%;
+   border: 1px solid var(--font-purple);
+   padding: 20px 20px;
+   transition: 0.3s;
+}
+
+.product .product_page .btnbtn {
+   bottom: 3%;
+}
+
+.product .product_page .product_button:hover {
+   border: 1px solid var(--font-pink);
+}
+
+.product .product_page .product_button a {
+   display: block;
+   text-align: center;
+}
+
+.product .product_page .product_button span{
+   color: var(--font-purple);
+   font-size: 30px;
+   font-family: var(--font-pixel);
+   text-align: center;
+   transition: 0.3s;
+}
+
+.product .product_page .product_button:hover span {
+   color: var(--font-pink);
+}
+
+.product .product_page .product_button3 {
+   display: block;
+   position: absolute;
+   float: right;
+   width: 6.5%;
+   right: -18%;
+   bottom: 4.8%;
+   border: 1px solid var(--font-purple);
+   padding: 5px 5px;
+   transition: 0.3s;
+}
+
+.product .product_page .product_button3:hover {
+   border: 1px solid var(--font-pink);
+}
+
+.product .product_page .product_button3 a {
+   display: block;
+   text-align: center;
+}
+
+.product .product_page .product_button3 span{
+   color: var(--font-purple);
+   font-size: 25px;
+   font-family: var(--font-pixel);
+   text-align: center;
+   transition: 0.3s;
+}
+
+.product .product_page .product_button3:hover span {
+   color: var(--font-pink);
+}
+
+.product .product_page .product_button4 {
+   display: block;
+   position: absolute;
+   float: right;
+   width: 6.5%;
+   right: -18%;
+   bottom: 4.8%;
+   border: 1px solid var(--font-purple);
+   padding: 5px 5px;
+   transition: 0.3s;
+}
+
+.product .product_page .product_button4:hover {
+   border: 1px solid var(--font-pink);
+}
+
+.product .product_page .product_button4 a {
+   display: block;
+   text-align: center;
+}
+
+.product .product_page .product_button4 span{
+   color: var(--font-purple);
+   font-size: 25px;
+   font-family: var(--font-pixel);
+   text-align: center;
+   transition: 0.3s;
+}
+
+.product .product_page .product_button4:hover span {
+   color: var(--font-pink);
+}
+
+.product .product_page .product_button5 {
+   display: block;
+   position: absolute;
+   float: right;
+   width: 6.5%;
+   right: -18%;
+   bottom: 4.8%;
+   border: 1px solid var(--font-purple);
+   padding: 5px 5px;
+   transition: 0.3s;
+}
+
+.product .product_page .product_button5:hover {
+   border: 1px solid var(--font-pink);
+}
+
+.product .product_page .product_button5 a {
+   display: block;
+   text-align: center;
+}
+
+.product .product_page .product_button5 span{
+   color: var(--font-purple);
+   font-size: 25px;
+   font-family: var(--font-pixel);
+   text-align: center;
+   transition: 0.3s;
+}
+
+.product .product_page .product_button5:hover span {
+   color: var(--font-pink);
+}
+
+/* MEGABOX product 2 */
+
+.product .product_page .product_img .monitor_wrap1_2 {
+   position: absolute;
+   left: 220px;
+   top: 180px;
+   width: 530px;
+   height: 420px;
+   background: url(img/megabox/magabox.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   z-index: -3;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap2_2 {
+   position: absolute;
+   left: 687px;
+   top: 402.5px;
+   width: 405px;
+   height: 312px;
+   background: url(img/megabox/megabox_pad.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap3_2 {
+   position: absolute;
+   left: 275px;
+   top: 590px;
+   width: 82px;
+   height: 145px;
+   background: url(img/megabox/magabox_phone.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap1_2:hover {
+   background-position: bottom;
+}
+
+.product .product_page .product_img .monitor_wrap2_2:hover {
+   background-position: bottom;
+}
+
+.product .product_page .product_img .monitor_wrap3_2:hover {
+   background-position: bottom;
+}
+
+/* SUSHI product 3 */
+
+.product .product_page .product_img .monitor_wrap1_3 {
+   position: absolute;
+   left: 220px;
+   top: 180px;
+   width: 530px;
+   height: 420px;
+   background: url(img/sushi/sushi.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   z-index: -3;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap2_3 {
+   position: absolute;
+   left: 687px;
+   top: 402.5px;
+   width: 405px;
+   height: 312px;
+   background: url(img/sushi/sushi_tab.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap3_3 {
+   position: absolute;
+   left: 275px;
+   top: 590px;
+   width: 82px;
+   height: 145px;
+   background: url(img/sushi/sushi_phone.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap1_3:hover {
+   background-position: bottom;
+}
+
+.product .product_page .product_img .monitor_wrap2_3:hover {
+   background-position: bottom;
+}
+
+.product .product_page .product_img .monitor_wrap3_3:hover {
+   background-position: bottom;
+}
+
+.product .product_page .product_num {
+   position: absolute;
+}
+
+.product .product_page .product_num .product_num_text {
+   position: absolute;
+   bottom: -1200px;
+   z-index: -4;
+}
+
+.product .product_page .product_num .product_num_text span {
+   font-size: 1000px;
+   font-family: var(--font-en);
+   color: rgba(255, 255, 255, 0.2)
+}
+
+/* MISIGN product 4 만들예정 */
+
+.product .product_page .product_img .monitor_wrap1_4 {
+   position: absolute;
+   left: 220px;
+   top: 180px;
+   width: 530px;
+   height: 420px;
+   background: url(img/musign/musign.gif)no-repeat;
+   background-size: cover;
+   background-position: top;
+   z-index: -3;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap2_4 {
+   position: absolute;
+   left: 687px;
+   top: 402.5px;
+   width: 405px;
+   height: 312px;
+   background: url(img/musign/musign_pad.gif)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img .monitor_wrap3_4 {
+   position: absolute;
+   left: 275px;
+   top: 590px;
+   width: 82px;
+   height: 145px;
+   background: url(img/musign/musign_phone.gif)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+/* CIDER product 5 */
+
+.product .product_page .product_img_one {
+   position: absolute;
+   float: left;
+   width: 60%;
+   bottom: 55%;
+}
+
+.product .product_page .product_img_one img {
+   position: absolute;
+   width: 750px;
+   height: 550px;
+   left: 0%;
+   top: 30%;
+}
+
+.product .product_page .product_img_one .monitor_wrap1_5 {
+   position: absolute;
+   left: 35px;
+   top: 30px;
+   width: 682px;
+   height: 360px;
+   background: url(img/cider/cider.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img_one .monitor_wrap1_5:hover {
+   background-position: bottom;
+}
+
+
+
+/* HANACARD product 6 */
+
+.product .product_page .product_img_one .monitor_wrap1_6 {
+   position: absolute;
+   left: 35px;
+   top: 30px;
+   width: 682px;
+   height: 360px;
+   background: url(img/card/hanacard.png)no-repeat;
+   background-size: cover;
+   background-position: top;
+   transition: 0.3s;
+}
+
+.product .product_page .product_img_one .monitor_wrap1_6:hover {
+   background-position: bottom;
+}
+
+/* ------------------contact------------------- */
+
+#contact {
+   position: relative;
+   width: 100vh;
+   height: 100vh;
+}
+
+.left_contact .left_contact_img img{
+   position: absolute;
+   width: 650px;
+   height: 700px;
+}
+
+.right_contact .right_contact_desc {
+   position: absolute;
+   border: 1px solid var(--font-purple);
+   padding: 100px;
+   top : 35%;
+}
+
+.right_contact .right_contact_desc p {
+   font-size: 20px;
+   font-family: var(--font-en);
+   margin-bottom: 20px;
+}
+
+.right_contact .right_contact_desc p span {
+   font-size: 30px;
+   font-family: var(--font-pixel);
+   color: var(--font-pink);
+   margin-right: 30px;
+}
+
+.right_contact .right_contact_desc .right_contact_options {
+   padding-top: 20px;
+}
+
+.right_contact .right_contact_desc .right_contact_options a {
+   width: 40px;
+   height: 40px;
+   font-style: none;
+   text-decoration: none;
+}
+
+.right_contact .right_contact_desc .right_contact_options a i {
+  font-size: 40px;
+  color: #AE00FB;
+  padding-right: 32px;
+  transition: 0.3s;
+}
+
+.right_contact .right_contact_desc .right_contact_options a i:hover {
+   color: #FA26A0;
+}
+
+.right_contact img {
+   position: absolute;
+   z-index: 8;
+   /* animation: up_down 2.5s ease-in-out infinite alternate; */
+}
+
+@keyframes up_down {
+   0% {
+      transform: translate(-50%, -50%) translateY(-50px);
+   }
+
+   100% {
+      transform: translate(-50%, -50%) translateY(50px);
+   }
+}

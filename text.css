@@ -1,0 +1,24 @@
+@font-face {
+    font-family: chacha;
+    src: url(./Heading-Now-Variable.ttf);
+}
+
+
+#page1{
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+   
+}
+#page1 h1{
+    position: relative;
+    font-size: 40vw;
+    color: white;
+    text-transform: uppercase;
+    font-family: chacha;
+    white-space: nowrap;
+    font-stretch: 260%;
+    font-weight: 999;
+    margin-left: 10vw;
+    
+}
