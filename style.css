@@ -26,6 +26,11 @@ a {
    text-transform: none;
 }
 
+/* Webkit (Safari/Chrome) */
+::-webkit-scrollbar {
+   display: none;
+ }
+
 html,
 .door {
    height: 100%;
@@ -64,6 +69,7 @@ h1 {
    top: 10px;
    z-index: 500;
    color: #Fff;
+   display: none;
 }
 
 /* door */
@@ -448,7 +454,36 @@ section.text_effect {
    font-size: 30px;
    color: #f637ec;
    margin: 10px 0;
+   position: relative;
 }
+.intro_right .intro_desc .intro h2.pro::after,
+.intro_right .intro_desc .intro h2.con::after,
+.intro_right .intro_desc .intro h2.his::after,
+.intro_right .intro_desc .intro h2.ski::after,
+.intro_right .intro_desc .intro h2.ab::after
+{
+   content: "";
+   position: absolute;
+   top: 10px; left: 0px;
+   width: 0px;
+   height: 20px;
+   transition: 0.5s;
+}
+.intro_right .intro_desc .intro h2.pro:hover::after,
+.intro_right .intro_desc .intro h2.con:hover::after,
+.intro_right .intro_desc .intro h2.his:hover::after,
+.intro_right .intro_desc .intro h2.ski:hover::after,
+.intro_right .intro_desc .intro h2.ab:hover::after
+{
+   content: "";
+   position: absolute;
+   top: 10px; left: 0px;
+   width: 150px;
+   height: 20px;
+     background-color:rgba(214, 83, 226, 0.3);
+}
+
+
 
 .intro_right .intro_desc .intro span {
    font-family: var(--font-pixel);

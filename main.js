@@ -297,7 +297,17 @@ window.addEventListener('load',function(){
 
 
 
+function scrollToBottom() {
+  setTimeout(function() {
+    window.scrollTo({
+      top: window.scrollY + 960,
+      behavior: 'smooth'
+    });
+  }, 2000); // 2초 후에 실행
+}
 
+// 함수 호출
+scrollToBottom();
 
 
 
